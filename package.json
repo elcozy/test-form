@@ -1,0 +1,17 @@
+{
+  "name": "test-form",
+  "version": "1.0.0",
+  "description": "a test-form using netlify functions",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run site:build && npm run lambda:build"
+  },
+  "author": "Madufor Chiemeka",
+  "devDependencies": {
+    "node-fetch": "^2.6.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
