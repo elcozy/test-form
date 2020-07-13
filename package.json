@@ -2,7 +2,7 @@
   "name": "test-form",
   "version": "1.0.0",
   "description": "a test-form using netlify functions",
-  "main": "app.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run site:build && npm run lambda:build"
