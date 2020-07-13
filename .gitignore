@@ -2,3 +2,4 @@
 /functions/key,env
 /key.env
 /node_modules
+/.env
