@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>form</h1>
+    <form name="contact" method="POST" data-netlify="true">
+        <p>
+            <label>Your Name: <input type="text" name="name" /></label>
+        </p>
+        <p>
+            <label>Your Email: <input type="email" name="email" /></label>
+        </p>
+        <p>
+            <label>Your Role: <select name="role[]" multiple>
+                    <option value="leader">Leader</option>
+                    <option value="follower">Follower</option>
+                </select></label>
+        </p>
+        <p>
+            <label>Message: <textarea name="message"></textarea></label>
+        </p>
+        <p>
+            <button type="submit">Send</button>
+        </p>
+    </form>
+    <br><br>
+    <form class="email-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <div hidden aria-hidden="true">
+            <label>
+                Don’t fill this out if you're human:
+                <input name="bot-field" />
+            </label>
+        </div>
+        <label for="email">Your email address</label>
+        <div>
+            <input type="email" name="emails" placeholder="Email" id="email" required />
+            <button type="submit">Subscribe</button>
+        </div>
+    </form>
+</body>
+
+<script>
+    const processForm = form => {
+        const data = new FormData(form)
+        data.append('form-name', 'newsletter');
+        fetch('/', {
+            method: 'POST',
+            body: data,
+        })
+            .then(() => {
+                form.innerHTML = `<div class="form--success">Almost there! Check your inbox for a confirmation e-mail.</div>`;
+            })
+            .catch(error => {
+                form.innerHTML = `<div class="form--error">Error: ${error}</div>`;
+            })
+    }
+
+
+    const emailForm = document.querySelector('.email-form')
+    if (emailForm) {
+        emailForm.addEventListener('submit', e => {
+            e.preventDefault();
+            processForm(emailForm);
+        })
+    }
+</script>
+
+</html>
